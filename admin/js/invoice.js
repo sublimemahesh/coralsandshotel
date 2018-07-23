@@ -295,8 +295,7 @@ $(document).ready(function () {
     $('.paid-view').click(function () {
 
         var id = $(this).attr('inv-id');
-//        window.location.replace("https://www.coralsandshotel.com/admin/view-invoices.php?id="+id);
-        window.location.replace("https://localhost/admin/view-invoices.php?id="+id);
+        window.location.replace("https://www.coralsandshotel.com/admin/view-invoices.php?id="+id);
 
 //        $.ajax({
 //

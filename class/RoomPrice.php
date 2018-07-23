@@ -186,5 +186,35 @@ class RoomPrice {
         }
         return $row;
     }
+    
+    public function getCheckInSeason($type, $basis, $date) {
+
+        $db = new DB();
+
+//        $date = date("Y-m-d");
+
+        $query = "SELECT * FROM `room-prices` WHERE (`type_id` = " . $type . " AND `basis_id` = " . $basis . " AND ('" . $date . "' between `start` and `end`)) ORDER BY `id` DESC LIMIT 1";
+
+        $result = $db->readQuery($query);
+
+        $row = mysql_fetch_assoc($result);
+
+        return $row;
+    }
+    
+    public function getCheckOutSeason($type, $basis, $date) {
+
+        $db = new DB();
+
+//        $date = date("Y-m-d");
+
+        $query = "SELECT * FROM `room-prices` WHERE (`type_id` = " . $type . " AND `basis_id` = " . $basis . " AND ('" . $date . "' between `start` and `end`)) ORDER BY `id` DESC LIMIT 1";
+
+        $result = $db->readQuery($query);
+
+        $row = mysql_fetch_assoc($result);
+
+        return $row;
+    }
 
 }

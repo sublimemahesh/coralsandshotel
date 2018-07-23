@@ -1,2 +1,0 @@
-# coralsandshotel
-https://coralsandshotel.com

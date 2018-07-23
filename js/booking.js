@@ -605,6 +605,7 @@ function calTot() {
     var nights = parseInt($('#nights').text());
     var oneEB = 0.00;
     var totalExtraBeds = 0;
+    var status;
 
     var supplementsPrice = 0.00;
     var oneSupplement = 0.00;
@@ -615,7 +616,15 @@ function calTot() {
     $(".prices-list").each(function (index) {
         roomsCount += parseInt($(this).val());
         roomsPrice += parseFloat($(this).find('option:selected').attr('each-price'));
+        var roomstatus = $(this).find('option:selected').attr('status');
+        
+        if(roomstatus === 'different') {
+            status = 1;
+        } else if(roomstatus === 'same') {
+            status = 0;
+        }
     });
+    
 
     $(".extrabeds").each(function (index) {
         totalExtraBeds = parseInt($(this).val());
@@ -641,7 +650,12 @@ function calTot() {
         $('#hide-supplement').hide();
     }
 
-    roomsPrice = roomsPrice * nights;
+    if(status == 1) {
+        roomsPrice = roomsPrice;
+    } else {
+        roomsPrice = roomsPrice * nights;
+    }
+    
     extraBedsPrice = extraBedsPrice * nights;
     supplementsPrice = supplementsPrice * nights;
     subTotal = roomsPrice + extraBedsPrice + supplementsPrice;
