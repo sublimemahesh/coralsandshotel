@@ -160,8 +160,8 @@
     position: fixed;
     z-index: 99999;
     top: 10px;
-    left: 1101px;
-    width: 212px;
+    left: 937px;
+    width: 32%;
 }
 .fixed-cart2 {
     position: relative;
@@ -244,7 +244,7 @@
     .fixed-cart {
         /*        left: 1043px;
                 width: 202px;*/
-        left: 744px;
+        left: 850px;
         width: 351px;
     }
 }
@@ -262,8 +262,8 @@
 }
 @media (max-width: 1024px) {
     .fixed-cart {
-        left: 807px;
-        width: 154px;
+        left: 674px;
+        width: 31%;
     }
 }
 @media (max-width: 948px) {

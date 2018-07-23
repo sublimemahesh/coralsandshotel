@@ -87,7 +87,7 @@ $percentage = $settings->getPercentage();
                                         <div class="contact-form">
                                             <div class="row">
 
-                                                <div class="col-md-8 col-xs-12 mobile-marg">
+                                                <div class="col-lg-8 col-md-8 col-xs-12 mobile-marg">
                                                     <div class="row">
                                                         <div class="col-xs-12">
                                                             <!-- Nav tabs -->
@@ -399,7 +399,7 @@ $percentage = $settings->getPercentage();
                                                 </div>
 
                                                 <div class="booking-price-wrap">
-                                                    <div class="col-md-4 col-xs-12 col-sm-6 booking-price cart-desktop" id="cart">
+                                                    <div class="col-lg-4 col-md-4 col-xs-12 col-sm-6 booking-price cart-desktop" id="cart">
                                                         <div class="cart-head">Your Price Summary</div>
                                                         <div class="price-box-container">
                                                             Number of Nights <span id="nights">0</span> & Number of Rooms <span id="cart-rooms">0</span> 

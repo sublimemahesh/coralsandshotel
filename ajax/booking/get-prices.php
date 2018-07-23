@@ -33,8 +33,8 @@ foreach ($subroomtypes as $subroomtype) {
     $typesdata['type'] = $subroomtype['room_type'];
     $typesdata['days'] = $dayCount;
     $typesdata['parent'] = $subroomtype['is_Child'];
-    
-    $DISCOUNT = new Discount(); 
+
+    $DISCOUNT = new Discount();
     $typesdata['discount'] = $DISCOUNT->getDiscount($checkin);
 
     $roomSet = array();
@@ -61,19 +61,50 @@ foreach ($subroomtypes as $subroomtype) {
 
     $arr[$subroomtype['id']] = $typesdata;
     $pricesByBasis = array();
+    $seoson = array();
+    
 
     foreach ($roombasises as $roombasis) {
+        $totalprice = 0;
 
-        $price = $roomprice->getPrice($subroomtype['id'], $roombasis['id'], $checkin);
-        if ($price['price'] == null) {
-            //$price['price'] = '0.00';
-            $pricedata = $defaultprice->getPriceByIds($subroomtype['id'], $roombasis['id']);
-            $price['price'] = $pricedata['price'];
+        $checkinseason = $roomprice->getCheckInSeason($subroomtype['id'], $roombasis['id'], $checkin);
+        $checkoutseason = $roomprice->getCheckOutSeason($subroomtype['id'], $roombasis['id'], $checkout);
+
+
+        if ($checkinseason['id'] == $checkoutseason['id']) {
+            $price = $roomprice->getPrice($subroomtype['id'], $roombasis['id'], $checkin);
+            if ($price['price'] == null) {
+                //$price['price'] = '0.00';
+                $pricedata = $defaultprice->getPriceByIds($subroomtype['id'], $roombasis['id']);
+                $price['price'] = $pricedata['price'];
+            }
+            $pricesByBasis[$roombasis['id']] = $price['price'];
+            $seoson['pricesByBasis'] = $pricesByBasis;
+            $seoson['status'] = 'same';
+        } else {
+
+            foreach ($bookingDates as $date) {
+                $price = $roomprice->getPrice($subroomtype['id'], $roombasis['id'], $date);
+                if ($price['price'] == null) {
+                    //$price['price'] = '0.00';
+                    $pricedata = $defaultprice->getPriceByIds($subroomtype['id'], $roombasis['id']);
+                    $price['price'] = $pricedata['price'];
+                }
+                $totalprice += $price['price'];
+            }
+
+
+
+
+            $pricesByBasis[$roombasis['id']] = $totalprice;
+            $seoson['pricesByBasis'] = $pricesByBasis;
+            $seoson['status'] = 'different';
         }
-        $pricesByBasis[$roombasis['id']] = $price['price'];
     }
 
-    $arr[$subroomtype['id']]['prices'] = $pricesByBasis;
+//    $arr[$subroomtype['id']]['prices'] = $pricesByBasis;
+    $arr[$subroomtype['id']]['prices'] = $seoson['pricesByBasis'];
+    $arr[$subroomtype['id']['prices']]['status'] = $seoson['status'];
 }
 
 

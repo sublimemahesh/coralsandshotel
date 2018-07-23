@@ -3,7 +3,14 @@
     <type>org.netbeans.modules.php.project</type>
     <configuration>
         <data xmlns="http://www.netbeans.org/ns/php-project/1">
-            <name>coralsandshotel</name>
+            <name>coral-sand-hotel</name>
         </data>
+        <spellchecker-wordlist xmlns="http://www.netbeans.org/ns/spellchecker-wordlist/1">
+            <word>dffnfnfjjf</word>
+            <word>dffnfnfjjffdfdf</word>
+            <word>fdf</word>
+            <word>fdfdf</word>
+            <word>fg</word>
+        </spellchecker-wordlist>
     </configuration>
 </project>
